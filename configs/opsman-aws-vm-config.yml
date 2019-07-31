@@ -1,0 +1,30 @@
+---
+# Used as input to the 'create-vm' task to create the Ops Manager VM.
+# Ref: https://docs.pivotal.io/platform-automation/v3.0/reference/inputs-outputs.html#ops-manager-config
+
+opsman-configuration:
+  aws:
+    region: ((region))
+    vm_name: ((vm_name))
+    boot_disk_size: ((boot_disk_size))
+    vpc_subnet_id: ((vpc_subnet_id))
+    security_group_id: ((security_group_id))
+    key_pair_name:  ((key_pair_name))
+    iam_instance_profile_name: ((iam_instance_profile_name))
+    instance_type: ((instance_type))
+    # At least one IP address (public or private)
+    # needs to be assigned to the VM.
+    # It is also permissable to assign both.
+    public_ip: ((public_ip)) 
+    #private_ip: ((private_ip)) 
+
+    # Required if use_instance_profile is false
+    # omit if using Instance Profiles
+    #access_key_id: ((access_key_id))
+    #secret_access_key: ((secret_access_key))
+
+    # If using Instance Profiles (omit if using AWS Credentials)
+    use_instance_profile: true # default false
+
+    # Optional, necessary if a role is needed to authorize the instance profile
+    assume_role: arn:aws:iam::123456789:role/test

@@ -1,0 +1,27 @@
+# Configuration files that will populate the file with the same name in the 'configs' directory.
+
+region: us-east-2
+vm_name: pipeline-ops-manager
+boot_disk_size: 100 # default 200
+vpc_subnet_id: subnet-0a6fc21e0d1b9a45f
+security_group_id: sg-033a96f940392887b
+key_pair_name: pipeline-prod-ops-manager-key
+iam_instance_profile_name: pipeline-prod_om_role 
+instance_type: m5.large
+
+# At least one IP address (public or private)
+# needs to be assigned to the VM.
+# It is also permissable to assign both.
+public_ip: 18.222.103.123
+#private_ip: 10.0.0.2
+
+# Required if use_instance_profile is false
+# omit if using Instance Profiles
+#access_key_id: sample-access-id
+#secret_access_key: sample-secret-access-key
+
+# If using Instance Profiles (omit if using AWS Credentials)
+use_instance_profile: true # default false
+
+# Optional, necessary if a role is needed to authorize the instance profile
+assume_role: 'arn:aws:iam::020615548198:instance-profile/pipeline-prod_ops_manager'
